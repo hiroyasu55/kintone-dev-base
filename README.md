@@ -75,8 +75,12 @@ $ npm install
 * kintoneにデプロイするファイルの情報
 * アプリ内で参照する共通変数
 
-本番用： env/prod.env.json  ・・・env/prod.env.json.sampleをコピーして作成します。
-開発用： env/dev.env.json
+環境設定ファイルは本番用／開発用に分けて作成できます。
+
+* 本番用： env/prod.env.json ・・・デフォルトで参照される
+* 開発用： env/dev.env.json
+
+作成例
 
 ```prod.env.json
 {
@@ -129,9 +133,9 @@ $ npm install
 * props: アプリ内で使用する共通変数（後述）
 * contentsPath: デプロイ元ソースの場所
 * contents: 各アプリにデプロイするファイルの情報。外部参照の場合はURLを記載
-    * contents.アプリ名.desktop.js: デスクトップアプリ用JavaScriptファイル
-    * contents.アプリ名.desktop.css: デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
-    * contents.アプリ名.mobile.js: モバイルアプリ用JavaScriptファイル
+* contents.アプリ名.desktop.js: デスクトップアプリ用JavaScriptファイル
+* contents.アプリ名.desktop.css: デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
+* contents.アプリ名.mobile.js: モバイルアプリ用JavaScriptファイル
 
 ### BASIC認証キー
 BASIC認証キーは、kintoneのユーザー・パスワードをBase６４エンコードして生成します。
