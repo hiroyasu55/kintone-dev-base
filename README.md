@@ -133,9 +133,9 @@ $ npm install
 * props: アプリ内で使用する共通変数（後述）
 * contentsPath: デプロイ元ソースの場所
 * contents: 各アプリにデプロイするファイルの情報。外部参照の場合はURLを記載
-    * contents.アプリ名.desktop.js: デスクトップアプリ用JavaScriptファイル
-    * contents.アプリ名.desktop.css: デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
-    * contents.アプリ名.mobile.js: モバイルアプリ用JavaScriptファイル
+* contents.アプリ名.desktop.js: デスクトップアプリ用JavaScriptファイル
+* contents.アプリ名.desktop.css: デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
+* contents.アプリ名.mobile.js: モバイルアプリ用JavaScriptファイル
 
 ### BASIC認証キー
 BASIC認証キーは、kintoneのユーザー・パスワードをBase６４エンコードして生成します。
