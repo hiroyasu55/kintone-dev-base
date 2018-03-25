@@ -67,19 +67,6 @@ $ cd my-app
 $ npm install
 ```
 
-### BASIC認証キー作成
-BASIC認証キーは kintoneのユーザー・パスワードをBase６４エンコードした文字列です。
-
-BASIC認証については https://developer.cybozu.io/hc/ja/articles/201941754#step8 を参照。
-
-＊ Macの場合
-
-```
-$ echo "Basic $(echo 'username:password' | base64)"
-```
-
-＊ Windowsの場合、 https://qiita.com/Jinshichi/items/9aba17a2a06bf96c0122 等を参考にして生成してください。
-
 ### 環境設定ファイル
 
 環境設定ファイルには以下の情報を記載します。
@@ -93,33 +80,31 @@ $ echo "Basic $(echo 'username:password' | base64)"
 
 ```prod.env.json
 {
-  "apps": {  ・・・ "kintoneアプリ名（任意の名称）": kintoneアプリID の形で記載する
+  "apps": {
     "customers": 81,
     "schedule": 85
   },
-  "subdomain": "1234x",　　　　  ・・・ kintoneサブドメイン
-  "auth": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",  ・・・ BASIC認証キー（上記で作成したもの）
-  "props": {  ・・・ アプリ内で使用する共通変数。kintoneEnv.propsで参照できる（後述）
+  "subdomain": "1234x",
+  "auth": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "props": {
     "otherApiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },
-  // デプロイ元ソースの場所
   "contentsPath": "./dist/prod",
-  // 各アプリにデプロイするファイルの情報
   "contents": {
     "customers": {
       "desktop": {
-        "js": [  ・・・デスクトップアプリ用JavaScriptファイル。外部参照の場合はURLを記載
+        "js": [
           "https://js.cybozu.com/vuejs/v2.5.11/vue.min.js",
           "js/customers.js"
         ],
-        "css": [  ・・・デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
+        "css": [
           "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
           "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
           "css/customers.css"
         ]
       },
       "mobile": {
-        "js": [  ・・・モバイルアプリ用JavaScriptファイル
+        "js": [
           "js/customersMobile.js"
         ]
       }
@@ -137,6 +122,29 @@ $ echo "Basic $(echo 'username:password' | base64)"
   }
 }
 ```
+
+* apps: kintoneアプリ名（任意の名称）と、kintoneアプリIDを記載
+* subdomain: kintoneサブドメイン（https://xxxxxx.cybozu.com/k/ のｘｘｘｘｘｘ部分）
+* auth: BASIC認証キー（後述）
+* props: アプリ内で使用する共通変数（後述）
+* contentsPath: デプロイ元ソースの場所
+* contents: 各アプリにデプロイするファイルの情報。外部参照の場合はURLを記載
+    * contents.アプリ名.desktop.js: デスクトップアプリ用JavaScriptファイル
+    * contents.アプリ名.desktop.css: デスクトップアプリ用CSSファイル（Sassファイルの拡張子を.scss→.cssに変えて記載）
+    * contents.アプリ名.mobile.js: モバイルアプリ用JavaScriptファイル
+
+### BASIC認証キー
+BASIC認証キーは、kintoneのユーザー・パスワードをBase６４エンコードして生成します。
+
+（https://developer.cybozu.io/hc/ja/articles/201941754#step8 を参照。）
+
+＊ Macの場合
+
+```
+$ echo 'username:password' | base64
+```
+
+＊ Windowsの場合、 https://qiita.com/Jinshichi/items/9aba17a2a06bf96c0122 等を参考にして生成してください。
 
 ### 共通変数
 環境設定ファイルに記載したapps、propsの値は、グローバル変数"kintoneEnv"として各kintone JavaScriptで参照できます。
