@@ -87,7 +87,7 @@ const sendCustomize = customize => {
  */
 const getCustromizeValues = (contents, browser, ext) => {
   const values = []
-  const contentsPath = env.contentsPath || path.resolve(__dirname, './dist')
+  const contentsPath = env.contentsPath || path.resolve(__dirname, `./dist/${mode}`)
 
   return contents
     .reduce((promise, content) => {
