@@ -1,0 +1,25 @@
+env:
+  browser: true
+extends:
+  - standard
+  - prettier
+  - prettier/standard
+parserOptions:
+  parser: babel-eslint
+  sourceType: module
+  allowImportExportEverywhere: false
+plugins:
+  - prettier
+globals:
+  kintone: true
+  kintoneEnv: true
+  Vue: true
+rules:
+  prettier/prettier: error
+  prefer-const: error
+  no-new: off
+  no-console:
+    - warn
+    - allow:
+      - warn
+      - error
