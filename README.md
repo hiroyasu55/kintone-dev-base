@@ -75,8 +75,12 @@ $ npm install
 * kintoneにデプロイするファイルの情報
 * アプリ内で参照する共通変数
 
-本番用： env/prod.env.json  ・・・env/prod.env.json.sampleをコピーして作成します。
-開発用： env/dev.env.json
+環境設定ファイルは本番用／開発用に分けて作成できます。
+
+* 本番用： env/prod.env.json ・・・デフォルトで参照される
+* 開発用： env/dev.env.json
+
+作成例
 
 ```prod.env.json
 {
