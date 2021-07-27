@@ -18,7 +18,7 @@
   "author": "hiroyasu55",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "form-data": "^2.3.2",
     "kintone-utility": "https://github.com/kintone/kintoneUtility.git"
   },
